@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "Trainer": {
+      "title": "Trainer",
+      "description": "A professional trainer at the gym.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the trainer" },
+        "role": { "type": "string", "description": "Job title or role" },
+        "specialty": { "type": "string", "description": "Area of expertise" },
+        "bio": { "type": "string", "description": "Short biography" },
+        "imageUrl": { "type": "string", "description": "URL to profile image" },
+        "instagram": { "type": "string", "description": "Instagram handle" }
+      },
+      "required": ["name", "role", "specialty", "imageUrl"]
+    },
+    "Class": {
+      "title": "Class",
+      "description": "A training session or class.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Name of the class" },
+        "description": { "type": "string", "description": "Detailed description" },
+        "schedule": { "type": "string", "description": "Time or frequency" },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced", "All Levels"] },
+        "imageUrl": { "type": "string", "description": "Class image URL" }
+      },
+      "required": ["title", "description", "level"]
+    },
+    "Retreat": {
+      "title": "Retreat",
+      "description": "A luxury training retreat package.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Package name" },
+        "description": { "type": "string", "description": "Package details" },
+        "duration": { "type": "string", "description": "Length of stay" },
+        "price": { "type": "string", "description": "Starting price" },
+        "imageUrl": { "type": "string", "description": "Package image URL" },
+        "features": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "duration", "price"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "A review from a guest.",
+      "type": "object",
+      "properties": {
+        "author": { "type": "string", "description": "Name of the reviewer" },
+        "content": { "type": "string", "description": "Review text" },
+        "rating": { "type": "number", "description": "Star rating (1-5)" },
+        "imageUrl": { "type": "string", "description": "Author image URL" }
+      },
+      "required": ["author", "content", "rating"]
+    }
+  },
+  "firestore": {
+    "trainers": { "schema": "Trainer", "description": "Collection of trainers" },
+    "classes": { "schema": "Class", "description": "Collection of classes" },
+    "retreats": { "schema": "Retreat", "description": "Collection of retreat packages" },
+    "testimonials": { "schema": "Testimonial", "description": "Collection of guest testimonials" }
+  }
+}
